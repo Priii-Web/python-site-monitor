@@ -1,184 +1,300 @@
-🖥️ Python Website Monitor
+# 🖥️ Python Website Monitor
 
-Projeto em Python para monitoramento de disponibilidade de sites, com envio automático de alertas por e-mail em caso de falhas.
+Projeto em Python para monitoramento de disponibilidade de sites.
 
-🎯 Objetivo do Projeto
+O script realiza verificações automáticas em websites configurados e identifica se estão **online ou fora do ar**.
+Caso algum site apresente erro de conexão ou não responda corretamente, o sistema envia **um alerta automático por e-mail**.
 
-Este projeto demonstra habilidades práticas em:
+Este projeto foi desenvolvido como prática de **automação, monitoramento de sistemas e tratamento de erros**, simulando situações reais enfrentadas por profissionais de **TI, análise de sistemas e segurança da informação**.
 
-Monitoramento de disponibilidade de websites
+---
 
-Detecção e tratamento de falhas de conexão
+# 🎯 Objetivo do Projeto
 
-Automação de envio de alertas por e-mail
+O objetivo deste projeto é demonstrar na prática:
 
-Uso de bibliotecas Python para requisições HTTP
+* Monitoramento de disponibilidade de websites
+* Detecção de falhas de conexão
+* Tratamento de erros de rede
+* Automação de envio de alertas por e-mail
+* Uso de bibliotecas Python para requisições HTTP
+* Estruturação e documentação de projeto para portfólio no GitHub
 
-Estruturação e documentação de projeto para portfólio profissional
+Esse tipo de monitoramento é comum em ambientes corporativos e em áreas como:
 
-Aplicabilidade real:
+* Infraestrutura de TI
+* DevOps
+* Monitoramento de sistemas
+* Cybersecurity / SOC (Security Operations Center)
 
-Este sistema simula monitoramento utilizado em ambientes corporativos, como:
+---
 
-Infraestrutura de TI
+# ⚙️ Tecnologias Utilizadas
 
-DevOps
+* Python 3
+* Biblioteca Requests
+* SMTP (envio de e-mails)
+* Automação de scripts
+* Ambiente virtual Python (venv)
 
-Monitoramento de sistemas críticos
+---
 
-Cybersecurity / SOC (Security Operations Center)
+# 📁 Estrutura do Projeto
 
-Ele pode ser expandido para integrações com dashboards, alertas em tempo real via Slack ou Telegram e análises de disponibilidade de serviços essenciais.
-
-Observação: Este é a primeira fase do projeto (MVP). A segunda fase incluirá funcionalidades adicionais e integração com o organizador ponto Pi.
-
-⚙️ Tecnologias Utilizadas
-
-Python 3
-
-Biblioteca requests
-
-SMTP para envio de e-mails
-
-Automação de scripts Python
-
-Ambiente virtual Python (venv)
-
-📁 Estrutura do Projeto
-
-python-site-monitor/
+```
+python-site-monitor
 │
-├── alerta_sites.py          # Script principal de monitoramento
-├── README.md                # Documentação do projeto
-├── .gitignore               # Arquivos a ignorar no GitHub
-├── images/                  # Imagens de demonstração
+├── alerta_sites.py
+├── README.md
+├── .gitignore
+│
+├── images
 │   ├── script-success.png
 │   ├── email-success.png
 │   ├── script-error.png
 │   └── email-alert-error.png
-└── venv/                    # Ambiente virtual (não subir para o GitHub)
+│
+└── venv
+```
 
-Dica: Verifique se a pasta venv/ e qualquer arquivo com credenciais, como config.py, estão incluídos no .gitignore antes de subir para o GitHub.
+Descrição:
 
-🧪 Como Executar o Projeto
-1️⃣ Criar ambiente virtual
+* **alerta_sites.py** → script principal de monitoramento
+* **images/** → pasta com imagens de demonstração do projeto
+* **README.md** → documentação do projeto
+* **.gitignore** → arquivos que não devem ser enviados para o GitHub
+* **venv/** → ambiente virtual Python
+
+---
+
+# 🧪 Como Executar o Projeto
+
+## 1️⃣ Criar ambiente virtual
+
+```
 python3 -m venv venv
-2️⃣ Ativar o ambiente virtual
+```
+
+---
+
+## 2️⃣ Ativar o ambiente virtual
 
 Linux / WSL:
 
+```
 source venv/bin/activate
+```
 
 Windows:
 
+```
 venv\Scripts\activate
-3️⃣ Instalar dependências
+```
+
+---
+
+## 3️⃣ Instalar dependências
+
+```
 pip install requests
-4️⃣ Configurar credenciais de e-mail
+```
 
-No código, utilize um placeholder para a senha antes de subir ao GitHub:
+---
 
-MEU_EMAIL = "seu_email@gmail.com"
-SENHA_APP = "CONFIGURAR_SENHA"
+## 4️⃣ Executar o script
 
-⚠️ Nunca publique sua senha real.
-
-5️⃣ Executar o script
+```
 python3 alerta_sites.py
+```
 
 O script iniciará a verificação dos sites configurados.
 
-🚀 Funcionamento do Sistema
+---
+
+# 🚀 Funcionamento do Sistema
 
 O script realiza os seguintes passos:
 
-Carrega a lista de sites configurados
+1. Carrega a lista de sites configurados
+2. Envia uma requisição HTTP para cada site
+3. Verifica se o site respondeu corretamente
+4. Caso ocorra erro de conexão ou status inválido
+5. Um alerta automático é enviado por e-mail
 
-Envia uma requisição HTTP para cada site
+Esse processo simula um sistema simples de **monitoramento de disponibilidade de sites**.
 
-Verifica se o site respondeu corretamente
+---
 
-Caso ocorra erro de conexão ou status inválido:
+# 🖥️ Demonstração do Script
 
-Um alerta automático é enviado por e-mail
+## Execução do Script com Sites Online
 
-O erro é registrado no terminal
+Quando os sites estão funcionando normalmente, o terminal mostra:
 
-🖥️ Demonstração do Script
-Sites online
+![Script funcionando](images/script-success.png)
 
 Exemplo de saída:
 
+```
 Iniciando checagem...
 
 ✅ https://www.google.com está online!
 ✅ https://github.com está online!
 
 Fim da checagem.
-Sites com erro
+```
 
-Exemplo de erro detectado:
+---
 
-NameResolutionError
-Max retries exceeded
-Failed to resolve host
-📧 Envio de Alerta por E-mail
+# 📧 Envio de Alerta por Email
 
-Quando um site apresenta falha, o sistema envia automaticamente um alerta:
+Quando um site apresenta erro ou não pode ser encontrado, o sistema envia automaticamente um alerta por e-mail.
+
+Exemplo de alerta recebido:
+
+![Email de alerta](images/email-success.png)
 
 Assunto do e-mail:
 
+```
 🚨 ALERTA: Site Fora do Ar
+```
 
 Mensagem:
 
+```
 O site apresentou erro de conexão.
-🔐 Como Gerar a Senha de Aplicativo do Gmail (16 dígitos)
+```
 
-Para enviar e-mails via Python, é necessário criar uma senha de aplicativo.
+---
 
-Passo 1 — Ativar verificação em duas etapas
+# ⚠️ Simulação de Erro de Site
+
+Para demonstrar o funcionamento do monitoramento, foi incluído um site inexistente no script.
+
+Quando o script detecta erro, ele registra a falha:
+
+![Script detectando erro](images/script-error.png)
+
+---
+
+# 📩 Alerta de Erro Recebido
+
+O sistema envia um e-mail contendo o erro detectado.
+
+![Erro enviado por email](images/email-alert-error.png)
+
+Exemplo de erro identificado:
+
+```
+NameResolutionError
+Max retries exceeded
+Failed to resolve host
+```
+
+Esses erros podem ocorrer quando:
+
+* o site não existe
+* o domínio não pode ser resolvido
+* há falha de rede
+* o servidor está fora do ar
+
+---
+
+# 🔐 Como Gerar a Senha de Aplicativo do Gmail (16 dígitos)
+
+Para que o Python consiga enviar e-mails usando o Gmail, é necessário criar uma **senha de aplicativo**, que é diferente da senha da conta.
+
+Essa senha possui **16 dígitos** e é usada apenas para aplicações externas.
+
+### Passo 1 — Ativar verificação em duas etapas
 
 Acesse a segurança da conta Google:
+
 https://myaccount.google.com/security
 
-Ative Verificação em duas etapas.
+Ative a opção:
 
-Passo 2 — Gerar senha de aplicativo
+**Verificação em duas etapas**
+
+Esse passo é obrigatório para poder gerar a senha de aplicativo.
+
+---
+
+### Passo 2 — Gerar senha de aplicativo
 
 Acesse:
+
 https://myaccount.google.com/apppasswords
 
 Escolha:
 
-Aplicativo → Mail
+Aplicativo → **Mail**
+Dispositivo → **Outro**
 
-Dispositivo → Outro
+Digite um nome, por exemplo:
 
-Nome → python-monitor
+```
+python-monitor
+```
 
-Clique em Gerar e copie a senha de 16 dígitos.
+Clique em **Gerar**.
 
-Passo 3 — Inserir senha no código
+O Google irá mostrar uma senha como esta:
 
-Use sem espaços:
+```
+abcd efgh ijkl mnop
+```
 
+---
+
+### Passo 3 — Usar a senha no código
+
+No código Python, utilize a senha **sem os espaços**:
+
+```
 SENHA_APP = "abcdefghijklmnop"
+```
 
-⚠️ Lembre-se: no GitHub, substitua por CONFIGURAR_SENHA.
+Exemplo no código:
 
-🔒 Segurança
+```
+MEU_EMAIL = "seu_email@gmail.com"
+SENHA_APP = "senha_de_16_digitos"
+```
 
-Nunca publique credenciais reais no repositório.
+⚠️ Importante:
 
-Arquivos de configuração com senha (config.py) devem estar no .gitignore.
+Nunca publique sua senha real no GitHub.
 
-A senha deve ser configurada manualmente no ambiente local antes da execução.
+---
 
-👩‍💻 Autora
+# 🔒 Segurança
 
-Priscila Ferreira de Gouvêia Tenório
+Por motivos de segurança, a senha utilizada para envio de e-mails **não deve ser publicada no repositório**.
+
+Antes de subir o projeto para o GitHub, substitua no código:
+
+```
+SENHA_APP = "sua_senha_real"
+```
+
+por algo como:
+
+```
+SENHA_APP = "CONFIGURAR_SENHA"
+```
+
+Assim você protege suas credenciais.
+
+---
+
+# 👩‍💻 Autora
+
+**Priscila Ferreira de Gouvêia Tenório**
+
 Formação em Desenvolvimento Back-End
 Pós-graduação em Cybersecurity e Cybercrime
 
 Projeto desenvolvido como prática de automação, monitoramento de sistemas e construção de portfólio em tecnologia.
+
