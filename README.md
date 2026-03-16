@@ -10,11 +10,11 @@ Monitoramento de disponibilidade de websites
 
 Detecção e tratamento de falhas de conexão
 
-Automação de envio de alertas por e-mail
+Automação de envio de alertas por e-mailgit
 
 Uso de bibliotecas Python para requisições HTTP
 
-Estruturação e documentação de projeto para portfólio profissional
+Estruturação e documentação de projeto para portfólio profissionalgit 
 
 Aplicabilidade real:
 
